@@ -28,10 +28,10 @@ To run this application, you'll need to have installed on your computer:
 
 ```bash
 # Clone repository
-$ git clone https://github.com/anaalicefig/gobarber-web.git
+$ git clone https://github.com/anaalicefig/kudo-web.git
 
 # Go into the repository
-$ cd gobarber-web
+$ cd kudo-web
 
 # Install dependencies
 $ yarn
@@ -46,7 +46,7 @@ $ npm start
 
 ---
 
-Made by Ana Alice :wave:
+Made with ♥ by Ana Alice :wave:
 <br>
 [Get in touch with me!](https://www.linkedin.com/in/ana-alice-figueiredo/)
 
