@@ -23,7 +23,6 @@ interface UpdateProfileFormData {
   email: string
   password: string
   old_password: string
-  password_confirmation:string
 }
 
 const Profile: React.FC = () => {
@@ -47,14 +46,6 @@ const Profile: React.FC = () => {
           then: Yup.string().required('Campo obrigatorio'),
           otherwises: Yup.string()
         }),
-        password_confirmation: Yup.string().when('old_password', {
-          is: val => !!val.length,
-          then: Yup.string().required('Campo obrigatorio'),
-          otherwises: Yup.string()
-        }).oneOf(
-          [Yup.ref('password'), null],
-          'Confirmação incorreta',
-        ),
       })
 
       await schema.validate(data, {
@@ -67,7 +58,6 @@ const Profile: React.FC = () => {
       }, data.old_password ? {
         old_password: data.old_password,
         password: data.password,
-        password_confirmation: data.password_confirmation
       }: {})
 
       const response = await api.put('/profile', formData)
@@ -131,7 +121,6 @@ const Profile: React.FC = () => {
 
               <Input name="name" icon={FiUser} placeholder="Nome" />
               <Input name="email" icon={FiMail} placeholder="E-mail" />
-              <Input name="password" icon={FiLock} placeholder="Senha" />
               <Input
                 ContainerStyle={{ marginTop: '24px' }}
                 name="old_password"
@@ -139,12 +128,7 @@ const Profile: React.FC = () => {
                 type="password"
                 placeholder="Senha Atual"
               />
-              <Input name="password" icon={FiLock} placeholder="Nova Senha" />
-              <Input
-                name="password_confirmation"
-                icon={FiLock}
-                placeholder="Confirmar Senha"
-              />
+              <Input name="password" type="password" icon={FiLock} placeholder="Nova Senha" />
 
               <Button type="submit">Confirmar mudanças</Button>
             </Form>
