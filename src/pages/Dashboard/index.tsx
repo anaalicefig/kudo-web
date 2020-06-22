@@ -43,7 +43,10 @@ const Dashboard: React.FC = () => {
   const { createSendKudo } = useKudo()
 
   useEffect(() => {
-    api.get('/brothers').then(response => setBrothers(response.data))
+    async function getBrothers() {
+      const response = await api.get('/brothers')
+      setBrothers(response.data)
+    }
     getUserProfile().then((user) => {
       const dateFormated = formatDate(user.updated_at)
       setLastUpdated(dateFormated)
@@ -53,6 +56,8 @@ const Dashboard: React.FC = () => {
         was_awesome: user.was_awesome
       })
     })
+
+    getBrothers()
   }, [getUserProfile])
 
   const handleSendKudo = useCallback(async (data: CreateSendKudoData) => {

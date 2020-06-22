@@ -28,7 +28,6 @@ export const KudoProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<GaveKudoUserData>({} as GaveKudoUserData)
 
   const createSendKudo = useCallback(async ({ received_user, type }: CreateKudoData) => {
-    console.log('CHEGOU UMENO AQUI', { received_user, type })
 
     const response = await api.post('kudos', {
       received_user,

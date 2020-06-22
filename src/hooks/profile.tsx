@@ -12,6 +12,13 @@ interface UserData {
   updated_at: Date
 }
 
+interface UpdateProfileFormData {
+  name: string
+  email: string
+  password: string
+  old_password: string
+}
+
 interface ProfileContextState {
   getUserProfile(): Promise<UserData>
 }
